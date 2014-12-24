@@ -16,7 +16,13 @@ $(document).ready(function(){
 
 
     pointLengthTooltip("#pointLength");
+
+
 });
+
+
+
+
 
 function pointLengthTooltip(id){
     var value = $(id).html();
@@ -29,23 +35,69 @@ function pointLengthTooltip(id){
     }
 }
 
+
+//=================subStringTooltip===================
+$(document).ready(function(){
+    subStringTooltip(".subString",20);
+});
+
+function subStringTooltip(className,maxLength){
+    $(className).each(function(index,element){
+
+        var value = $.trim($(element).html());
+        var computeLength = computeByLength(value,maxLength);
+        var realLength = computeLength.realLength;
+        var subIndex = computeLength.subIndex;
+        console.info("index="+index+" subIndex="+subIndex+" realLength="+realLength+" value="+value );
+
+        if(realLength>maxLength){
+            var subStr = value.substring(0,subIndex)+"...";
+            console.info("subStr(0,10)="+subStr);
+            $(element).html(subStr).css("color","blue");
+            $(element).tooltip({
+                title:value
+            });
+        }
+    });
+}
+
 //计算字符串长度 汉字算两个
-function computeByLength(value){
-    var length = value.length;
+function computeByLength(value,maxLength){
+    var realLength = value.length;
     var subIndex = 10;
     var count = 0;
-    for (var i = 0; i < value.length; i++) {
+    for (var i = 0; i < realLength; i++) {
         if (value.charCodeAt(i) > 127) {
-            length++;
+            realLength++;
             count++;
         }
         count++;
-        if (count<=20) {
+        if (count<=maxLength) {
             subIndex = i+1;
         };
     }
     return {
-        length:length,
+        realLength:realLength,
         subIndex:subIndex
     };
 }
+
+//==============/. subStringTooltip=====================
+
+//=======================img tooltip========================
+$(document).ready(function(){
+    imgTooltip();
+});
+
+function imgTooltip(){
+    $(".imgTooltip").each(function(index,element){
+        var src= $(element).attr("name");
+        var html = '<img src="'+src+'" width="100%">';
+        $(element).tooltip({
+            html:true,
+            title:html
+        }).css("color","blue");
+    });
+}
+
+//===================/. img tooltip====================================

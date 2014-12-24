@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>jquery ui tooltip test</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <!--<link rel="stylesheet" type="text/css" href="jquery-ui-1.11.2.custom.ui-smoothness/jquery-ui.css">-->
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.11.2.custom.ui-lightness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -16,6 +17,7 @@
             <td colspan="2">
                 <p>jquery ui tooltip 测试，如果同时使用bootstrap，则需要后导入jquery_ui.css和jquery_ui.js，以免和bootstrap tooltip冲突</p>
                 <p>jquery ui tooltip 必须加title才能生效</p>
+                <p>value.substring(0,10)+"..." 使用注意换行问题，value获取应该使用$.trim()去掉空格和换行</p>
                 <p><a href="http://api.jqueryui.com/tooltip/">tooltip API</a></p>
             </td>
         </tr>
@@ -76,6 +78,52 @@
                 <label id="pointLength" title="固定长度测试，超过10个自动截断，使用tooltip显示" >固定长度测试，超过10个自动截断，使用tooltip显示</label>
             </td>
         </tr>
+        <tr>
+            <th>字母超出10个自动截断(class)</th>
+            <td>
+                <label class="pointLength" title="" >This link and that link should have tooltips on hover. </label>
+            </td>
+        </tr>
+        <tr>
+            <th>字母超出10个自动截断(class)</th>
+            <td>
+                <label class="pointLength" title="">
+                    Default title value if title attribute isn't present. If a function is given, it will be called with its this reference set to the element that the tooltip is attached to.
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <th>超出20个自动截断(中文算2个)</th>
+            <td>
+                <label class="subString" title="" >congratulation synchronize If a function is given, it will be called with its this reference set to the element that the tooltip is attached to.</label>
+            </td>
+        </tr>
+        <tr>
+            <th>超出20个自动截断(中文算2个)</th>
+            <td>
+                <label class="subString" title="" >超出二十个字符自动截断，中文算2个字符</label>
+            </td>
+        </tr>
+        <tr>
+            <th>超出20个自动截断(中文算2个)</th>
+            <td>
+                <label class="subString" title="" >welcome中华人民共和国</label>
+            </td>
+        </tr>
+        <tr>
+            <th>不超出20个，不显示tooltip</th>
+            <td>
+                <label class="subString" title="" >welcome中国</label>
+            </td>
+        </tr>
+        <tr>
+            <th>img tooltip</th>
+            <td>
+                <label class="imgTooltip" title="" name="img/14456977_950.jpg">14456977_950.jpg</label> &nbsp;&nbsp;
+                <label class="imgTooltip" title="" name="img/14456980_950.jpg">14456980_950.jpg</label>&nbsp;&nbsp;
+                <label class="imgTooltip" title="" name="img/5.jpg">5.jpg</label>
+            </td>
+        </tr>
     </table>
 
 </div>
@@ -84,7 +132,7 @@
 </body>
 <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/jquery-ui.js"></script>
-
+<!--<script type="text/javascript" src="jquery-ui-1.11.2.custom.ui-smoothness/jquery-ui.js"></script>-->
+<script type="text/javascript" src="jquery-ui-1.11.2.custom.ui-lightness/jquery-ui.js"></script>
 <script type="text/javascript" src="js/jqueryTooltip.js"></script>
 </html>
