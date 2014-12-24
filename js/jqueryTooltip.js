@@ -155,7 +155,7 @@ function imgTooltip(){
         var html = '<img src="'+src+'" width="100%">';
         $(element).tooltip({
             content:html
-        });
+        }).css("color","blue");
     });
 }
 
